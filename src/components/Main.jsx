@@ -3,9 +3,9 @@ import React from "react";
 import Card from "./Card";
 
 export default function Main(props) {
-  const [userAvatar, setUserAvatar] = React.useState();
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
+  const [userAvatar, setUserAvatar] = React.useState('');
+  const [userName, setUserName] = React.useState('');
+  const [userDescription, setUserDescription] = React.useState('');
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -16,11 +16,10 @@ export default function Main(props) {
         setUserDescription(user.about);
         setCards(cards);
       })
-
       .catch((err) => {
         console.log(`${err}, попробуйте ещё`);
       });
-  });
+  }, [])
 
   return (
     <main className="content">
