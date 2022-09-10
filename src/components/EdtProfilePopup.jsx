@@ -8,7 +8,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(
-    (currentUser) => {
+    () => {
       if (currentUser) {
         setName(currentUser.name);
         setDescription(currentUser.about);
@@ -32,8 +32,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       name,
       about: description,
     });
-    setName("");
-    setDescription("");
+    /* Добрый вечер! Этой частью кода я специально сделал очищение форм после сохранения данных о пользователе.
+      Если так не нужно, значит удалю эту часть*/
+    //setName("");
+    //setDescription("");
   }
 
   return (
