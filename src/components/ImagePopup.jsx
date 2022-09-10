@@ -9,14 +9,12 @@ function ImagePopup({ card, onClose }) {
           onClick={onClose}
         ></button>
         <img
-          /*src={card ? card.link : ""}
-          alt={card ? card.name : ""}*/
           src={card !== null ? card.link : ""}
           alt={card !== null ? card.name : ""}
           className="popup__img-card"
         />
         <figcaption className="popup__img-title">
-        {card !== null ? card.name : ""}
+          {card !== null ? card.name : ""}
         </figcaption>
       </figure>
     </section>
@@ -24,4 +22,3 @@ function ImagePopup({ card, onClose }) {
 }
 
 export default ImagePopup;
-

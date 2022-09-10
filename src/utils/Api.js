@@ -25,7 +25,7 @@ class Api {
             .then(this._getResponseData)
     }
 
-    editProfile(inputValues) {
+    /*editProfile(inputValues) {
         return fetch(`${this._baseUrl}/users/me`, {
                 method: "PATCH",
                 headers: this._headers,
@@ -35,15 +35,28 @@ class Api {
                 })
             })
             .then(this._getResponseData)
+    }*/
+
+    editProfile({ name, about }) {
+        return fetch(`${this._baseUrl}/users/me`, {
+                method: "PATCH",
+                headers: this._headers,
+                body: JSON.stringify({
+                    name: name,
+                    about: about
+                })
+            })
+            .then(this._getResponseData)
     }
 
-    addCard(name, link) {
+
+    addCard({ name, link }) {
         return fetch(`${this._baseUrl}/cards`, {
                 method: "POST",
                 headers: this._headers,
                 body: JSON.stringify({
-                    name,
-                    link
+                    name: name,
+                    link: link
                 })
             })
             .then(this._getResponseData)
@@ -57,9 +70,17 @@ class Api {
             .then(this._getResponseData)
     }
 
-    deleteLike(id) {
+    /* deleteLike(id) {
+         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+                 method: "DELETE",
+                 headers: this._headers
+             })
+             .then(this._getResponseData)
+     }*/
+
+    changeLikeCardStatus(id, isLiked) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-                method: "DELETE",
+                method: isLiked ? 'DELETE' : 'PUT',
                 headers: this._headers
             })
             .then(this._getResponseData)
